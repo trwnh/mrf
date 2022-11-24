@@ -35,12 +35,11 @@ defmodule Pleroma.Web.ActivityPub.MRF.NoPublicPolicy do
           "actor" => actor
         } = message
       ) do
-    if local?(actor) do
+    message = if local?(actor) do
       to = to |> remove_public()
       cc = cc |> remove_public()
 
-      message =
-        message
+     message
         |> Map.put("to", to)
         |> Map.put("cc", cc)
         |> maybe_update_nested_object_addressing(to, cc)
