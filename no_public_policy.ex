@@ -39,7 +39,7 @@ defmodule Pleroma.Web.ActivityPub.MRF.NoPublicPolicy do
       to = to |> remove_public()
       cc = cc |> remove_public()
 
-     message
+      message
         |> Map.put("to", to)
         |> Map.put("cc", cc)
         |> maybe_update_nested_object_addressing(to, cc)
