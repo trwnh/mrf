@@ -43,6 +43,8 @@ defmodule Pleroma.Web.ActivityPub.MRF.NoPublicPolicy do
         |> Map.put("to", to)
         |> Map.put("cc", cc)
         |> maybe_update_nested_object_addressing(to, cc)
+    else
+      message
     end
 
     {:ok, message}
